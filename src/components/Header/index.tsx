@@ -9,7 +9,7 @@ import {
 
 export function Header() {
   return (
-    <HeaderContainer>
+    <HeaderContainer className="container">
       <img src={logoCoffeeDelivery} alt="" />
       <ActionsContainer>
         <Location>

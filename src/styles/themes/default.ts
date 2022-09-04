@@ -35,7 +35,7 @@ export const defaultTheme = {
     'components-button-s': '0.75rem',
   },
   fonts: {
-    regular: 'Roboto',
-    title: 'Baloo 2',
+    regular: "'Roboto'",
+    title: "'Baloo 2'",
   },
 };
