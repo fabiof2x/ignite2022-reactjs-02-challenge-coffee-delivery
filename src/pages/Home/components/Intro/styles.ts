@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 import introBG from '../../../../assets/intro-bg.png'
 
 export const IntroContainer = styled.section`

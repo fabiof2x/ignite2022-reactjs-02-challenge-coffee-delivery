@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { FEATURE_ITEM_COLORS } from '../../../../constants/FEATURE_ITEM_COLORS';
+import styled from 'styled-components'
+import { FEATURE_ITEM_COLORS } from '../../../../constants/FEATURE_ITEM_COLORS'
 
 export const FeatureItemContainer = styled.div`
   display: flex;
@@ -22,7 +22,7 @@ export const FeatureItemIcon = styled.div<FeatureIconProps>`
 `
 
 export const FeatureItemText = styled.div`
-  font-family: ${({ theme }) => theme.fonts.regular};;
-   font-size: ${({ theme }) => theme.textSizes["text-regular-m"]};
-   color: ${({ theme }) => theme.colors["base-text"]};
+  font-family: ${({ theme }) => theme.fonts.regular};
+  font-size: ${({ theme }) => theme.textSizes["text-regular-m"]};
+  color: ${({ theme }) => theme.colors["base-text"]};
 `
