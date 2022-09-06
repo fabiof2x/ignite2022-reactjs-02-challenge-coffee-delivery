@@ -1,6 +1,7 @@
 import { ShoppingCart } from 'phosphor-react';
 import { CoffeeDTO } from '../../../../dtos/CoffeesDTO'
 import { toMoneyFormat } from '../../../../libs/toMoneyFormat';
+import { CounterInput } from '../CounterInput';
 
 import {
   CoffeeCardContainer,
@@ -23,7 +24,7 @@ interface CoffeeCardProps {
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
   return (
     <CoffeeCardContainer>
-      <CoffeeImage src={`/coffees/${coffee.photo}`} />
+      <CoffeeImage src={`/img/coffees/${coffee.photo}`} />
       <CoffeeTagsContainer>
         {coffee.tags.map((tag) => (
           <CoffeeTag key={`${tag}${Math.random()}`}>
@@ -48,6 +49,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
         </CoffeePriceInfo>
 
         <AddCartWrapper>
+          <CounterInput />
           <AddCartButton>
             <ShoppingCart weight="fill" size={22} />
           </AddCartButton>

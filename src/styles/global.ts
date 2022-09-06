@@ -19,4 +19,13 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-size: ${({ theme }) => theme.textSizes["text-regular-m"]}
   }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 `

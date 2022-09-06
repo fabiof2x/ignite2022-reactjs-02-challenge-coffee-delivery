@@ -72,9 +72,16 @@ export const CoffeePrice = styled.div`
   font-family: ${({ theme }) => theme.fonts.title};
   font-size: ${({ theme }) => theme.textSizes['title-title-m']};
   color: ${({ theme }) => theme.colors["base-text"]};
+  line-height: 0.75rem ;
 `
 
+export const AddCartWrapper = styled.div`
+display: flex;
+  width: 7.5rem;
+`;
+
 export const AddCartButton = styled.button`
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +98,3 @@ export const AddCartButton = styled.button`
     background: ${({ theme }) => theme.colors["brand-purple"]};
   }
 `
-
-export const AddCartWrapper = styled.div`
-  width: 7.5rem;
-`;
