@@ -76,7 +76,7 @@ export const CoffeePrice = styled.div`
 `
 
 export const AddCartWrapper = styled.div`
-display: flex;
+  display: flex;
   width: 7.5rem;
 `;
 
