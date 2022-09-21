@@ -1,7 +1,7 @@
 import { ShoppingCart } from 'phosphor-react';
+import { CounterInput } from '../../../../components/CounterInput';
 import { CoffeeDTO } from '../../../../dtos/CoffeesDTO'
 import { toMoneyFormat } from '../../../../libs/toMoneyFormat';
-import { CounterInput } from '../CounterInput';
 
 import {
   CoffeeCardContainer,

@@ -5,7 +5,7 @@ export const CoffeeListContainer = styled.section`
 `;
 
 export const CoffeeListTitle = styled.h2`
-  font-family: ${({ theme }) => theme.fonts.title};;
+  font-family: ${({ theme }) => theme.fonts.title};
   font-size: ${({ theme }) => theme.textSizes["title-title-l"]};
   color: ${({ theme }) => theme.colors["base-subtitle"]};
   font-weight: 800;

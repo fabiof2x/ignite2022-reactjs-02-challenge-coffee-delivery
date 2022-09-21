@@ -132,12 +132,4 @@ export const PaymentFormButton = styled(ToggleGroup.Item) <PaymentFormButtonProp
 
   }
   user-select: none;
-
-  .payment-button-selected {
-    background: red;
-  }
-
-  .payment-button-unselected {
-    background: black;
-  }
 `

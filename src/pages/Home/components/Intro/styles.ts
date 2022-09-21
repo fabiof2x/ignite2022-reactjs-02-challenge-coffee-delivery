@@ -22,7 +22,7 @@ export const IntroText = styled.div`
 
 export const IntroTextTitle = styled.div`
   h1 {
-    font-family: ${({ theme }) => theme.fonts.title};;
+    font-family: ${({ theme }) => theme.fonts.title};
     font-size: ${({ theme }) => theme.textSizes["title-title-xl"]};
     color: ${({ theme }) => theme.colors["base-title"]};
     font-weight: 800;
