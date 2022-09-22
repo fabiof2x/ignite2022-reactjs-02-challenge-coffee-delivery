@@ -14,7 +14,7 @@ import {
 } from 'phosphor-react'
 
 import introCoffee from '../../../../assets/intro-coffee.png'
-import { FeatureItem } from '../FeatureItem'
+import { FeatureItem } from '../../../../components/FeatureItem'
 
 export function Intro() {
   return (

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { FEATURE_ITEM_COLORS } from '../../../../constants/FEATURE_ITEM_COLORS'
+import { FEATURE_ITEM_COLORS } from '../../constants/FEATURE_ITEM_COLORS'
 
 export const FeatureItemContainer = styled.div`
   display: flex;

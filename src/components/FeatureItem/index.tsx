@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
-import { FEATURE_ITEM_COLORS } from '../../../../constants/FEATURE_ITEM_COLORS'
+import { FEATURE_ITEM_COLORS } from '../../constants/FEATURE_ITEM_COLORS';
+
 
 import {
   FeatureItemContainer,
@@ -10,7 +11,7 @@ import {
 interface FeatureItemProps {
   color: keyof typeof FEATURE_ITEM_COLORS;
   icon: ReactNode;
-  text: string
+  text: String | ReactNode;
 }
 
 export function FeatureItem({ color, icon, text }: FeatureItemProps) {
