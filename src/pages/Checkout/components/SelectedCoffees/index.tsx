@@ -1,3 +1,5 @@
+import { useCart } from "../../../../hooks/useCart";
+import { toMoneyFormat } from "../../../../libs/toMoneyFormat";
 import { SelectedCoffeesCard } from "../SelectedCoffeesCard";
 import {
   ConfirmationSectionContainer,
@@ -11,7 +13,20 @@ import {
   ConfirmationButton,
 } from "./styles";
 
+const DELIVERY_PRICE = 3.5;
+
 export function SelectedCoffees() {
+  const { cartItems,
+    cartItemsTotal,
+    cartQuantity,
+  } = useCart();
+
+  const cartTotal = DELIVERY_PRICE + cartItemsTotal;
+
+  const formattedItemsTotal = toMoneyFormat(cartItemsTotal);
+  const formattedDeliveryPrice = toMoneyFormat(DELIVERY_PRICE);
+  const formattedCartTotal = toMoneyFormat(cartTotal);
+
   return (
     <SelectedCoffeesContainer>
       <SelectedCoffeesTitle>
@@ -19,24 +34,27 @@ export function SelectedCoffees() {
       </SelectedCoffeesTitle>
 
       <DetailsContainer>
-        <SelectedCoffeesCard />
-        <SelectedCoffeesCard />
-        <SelectedCoffeesCard />
+        {cartItems.map((item) => (
+          <SelectedCoffeesCard
+            key={item.id}
+            coffee={item}
+          />
+        ))}
 
         <ConfirmationSectionContainer>
           <div>
             <ConfirmationItem>Total de itens</ConfirmationItem>
-            <ConfirmationAmount>R$ 9,90</ConfirmationAmount>
+            <ConfirmationAmount>R$ {formattedItemsTotal}</ConfirmationAmount>
           </div>
           <div>
             <ConfirmationItem>Entrega</ConfirmationItem>
-            <ConfirmationAmount>R$ 3,50</ConfirmationAmount>
+            <ConfirmationAmount>R$ {formattedDeliveryPrice}</ConfirmationAmount>
           </div>
           <div>
             <TotalItem>Total</TotalItem>
-            <TotalAmount>R$ 33,20</TotalAmount>
+            <TotalAmount>R$ {formattedCartTotal}</TotalAmount>
           </div>
-          <ConfirmationButton>Confirmar Pedido</ConfirmationButton>
+          <ConfirmationButton disabled={cartQuantity <= 0}>Confirmar Pedido</ConfirmationButton>
         </ConfirmationSectionContainer>
       </DetailsContainer>
     </SelectedCoffeesContainer>

@@ -14,11 +14,11 @@ export function CounterInput({
 }: CounterInputProps) {
   return (
     <CounterInputContainer>
-      <IconWrapper disabled={quantity <= 1} onClick={onDecrease}>
+      <IconWrapper type="button" disabled={quantity <= 1} onClick={onDecrease}>
         <Minus size={14} weight="fill" />
       </IconWrapper>
       <input type="number" readOnly value={quantity} />
-      <IconWrapper onClick={onIncrease}>
+      <IconWrapper type="button" onClick={onIncrease}>
         <Plus size={14} weight="fill" />
       </IconWrapper>
     </CounterInputContainer>

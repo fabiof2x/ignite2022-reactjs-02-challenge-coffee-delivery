@@ -1,5 +1,8 @@
 import { Trash } from "phosphor-react";
 import { CounterInput } from "../../../../components/CounterInput";
+import { CartItem } from "../../../../contexts/CartContext"
+import { useCart } from "../../../../hooks/useCart";
+import { toMoneyFormat } from "../../../../libs/toMoneyFormat";
 import {
   ActionsContainer,
   SelectedCoffeeImage,
@@ -10,23 +13,52 @@ import {
   SelectedCoffeePrice
 } from "./styles";
 
-export function SelectedCoffeesCard() {
+interface SelectedCoffeesCardProps {
+  coffee: CartItem;
+}
+
+export function SelectedCoffeesCard({ coffee }: SelectedCoffeesCardProps) {
+  const { changeCartItemQuantity, removeCartItem } = useCart();
+
+  function handleIncrease() {
+    changeCartItemQuantity(coffee.id, "increase")
+  }
+
+  function handleDecrease() {
+    changeCartItemQuantity(coffee.id, "decrease")
+  }
+
+  function handleRemove() {
+    removeCartItem(coffee.id)
+  }
+
+  const coffeeTotal = coffee.price * coffee.quantity;
+
+  const formatedPrice = toMoneyFormat(coffeeTotal);
+
   return (
     <SelectedCoffeesCardContainer>
       <SelectedCoffeesCardContent>
-        <SelectedCoffeeImage src={`/img/coffees/tradicional.png`} />
+        <SelectedCoffeeImage src={`/img/coffees/${coffee.photo}`} />
         <div>
-          <SelectedCoffeeName>Expresso Tradicional</SelectedCoffeeName>
+          <SelectedCoffeeName>{coffee.name}</SelectedCoffeeName>
           <ActionsContainer>
-            <CounterInput />
-            <RemoveButton>
+            <CounterInput
+              onIncrease={handleIncrease}
+              onDecrease={handleDecrease}
+              quantity={coffee.quantity}
+            />
+            <RemoveButton
+              type="button"
+              onClick={handleRemove}
+            >
               <Trash size={16} />
               Remover
             </RemoveButton>
           </ActionsContainer>
         </div>
       </SelectedCoffeesCardContent>
-      <SelectedCoffeePrice>R$ 9,90</SelectedCoffeePrice>
+      <SelectedCoffeePrice>R$ {formatedPrice}</SelectedCoffeePrice>
     </SelectedCoffeesCardContainer>
   )
 }
