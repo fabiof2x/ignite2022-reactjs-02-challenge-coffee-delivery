@@ -17,7 +17,6 @@ export const ActionsContainer = styled.nav`
 
 export const BaseHeaderButton = styled.button`
   display: flex;
-  cursor: pointer;
   border: 0;
   gap: 0.25rem;
   border-radius: 6px;
@@ -37,6 +36,24 @@ export const Location = styled(BaseHeaderButton)`
 `
 
 export const Cart = styled(BaseHeaderButton)`
+  cursor: pointer;
   background: ${({ theme }) => theme.colors['brand-yellow-light']};
   color: ${({ theme }) => theme.colors['brand-yellow-dark']};
+  position: relative;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 9999px;
+    top: calc(-1.25rem/2);
+    right: calc(-1.25rem/2);
+    color: ${({ theme }) => theme.colors['base-white']};
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: ${({ theme }) => theme.colors['brand-yellow-dark']};
+  }
 `

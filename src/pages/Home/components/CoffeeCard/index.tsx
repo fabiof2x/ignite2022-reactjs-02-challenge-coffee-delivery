@@ -1,6 +1,8 @@
 import { ShoppingCart } from 'phosphor-react';
+import { useState } from 'react';
 import { CounterInput } from '../../../../components/CounterInput';
 import { CoffeeDTO } from '../../../../dtos/CoffeesDTO'
+import { useCart } from '../../../../hooks/useCart';
 import { toMoneyFormat } from '../../../../libs/toMoneyFormat';
 
 import {
@@ -22,6 +24,26 @@ interface CoffeeCardProps {
 }
 
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
+  const [quantity, setQuantity] = useState(1);
+
+  function handleIncrease() {
+    setQuantity((state) => state + 1);
+  }
+
+  function handleDecrease() {
+    setQuantity((state) => state - 1);
+  }
+
+  const { addCoffeeToCart } = useCart();
+
+  function handleAddToCart() {
+    const coffeeToAdd = {
+      ...coffee,
+      quantity
+    }
+    addCoffeeToCart(coffeeToAdd)
+  }
+
   return (
     <CoffeeCardContainer>
       <CoffeeImage src={`/img/coffees/${coffee.photo}`} />
@@ -49,8 +71,14 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
         </CoffeePriceInfo>
 
         <AddCartWrapper>
-          <CounterInput />
-          <AddCartButton>
+          <CounterInput
+            onIncrease={handleIncrease}
+            onDecrease={handleDecrease}
+            quantity={quantity}
+          />
+          <AddCartButton
+            onClick={handleAddToCart}
+          >
             <ShoppingCart weight="fill" size={22} />
           </AddCartButton>
         </AddCartWrapper>

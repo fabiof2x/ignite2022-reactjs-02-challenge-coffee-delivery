@@ -1,14 +1,24 @@
 import { Minus, Plus } from "phosphor-react";
 import { CounterInputContainer, IconWrapper } from "./styles";
 
-export function CounterInput() {
+interface CounterInputProps {
+  onIncrease: () => void;
+  onDecrease: () => void;
+  quantity: number;
+}
+
+export function CounterInput({
+  onIncrease,
+  onDecrease,
+  quantity
+}: CounterInputProps) {
   return (
     <CounterInputContainer>
-      <IconWrapper>
+      <IconWrapper disabled={quantity <= 1} onClick={onDecrease}>
         <Minus size={14} weight="fill" />
       </IconWrapper>
-      <input type="number" readOnly value={0} />
-      <IconWrapper>
+      <input type="number" readOnly value={quantity} />
+      <IconWrapper onClick={onIncrease}>
         <Plus size={14} weight="fill" />
       </IconWrapper>
     </CounterInputContainer>
