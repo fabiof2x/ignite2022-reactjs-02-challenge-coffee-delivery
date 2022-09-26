@@ -54,7 +54,12 @@ export function SelectedCoffees() {
             <TotalItem>Total</TotalItem>
             <TotalAmount>R$ {formattedCartTotal}</TotalAmount>
           </div>
-          <ConfirmationButton disabled={cartQuantity <= 0}>Confirmar Pedido</ConfirmationButton>
+          <ConfirmationButton
+            type="submit"
+            disabled={cartQuantity <= 0}
+          >
+            Confirmar Pedido
+          </ConfirmationButton>
         </ConfirmationSectionContainer>
       </DetailsContainer>
     </SelectedCoffeesContainer>

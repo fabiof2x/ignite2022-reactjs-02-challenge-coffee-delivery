@@ -62,27 +62,6 @@ export const AddressFormContainer = styled.div`
   row-gap: 1rem;
   grid-auto-flow: dense;
 
-  input {
-    height: 2.625rem;
-    border-radius: 4px;
-    border: 1px solid ${({ theme }) => theme.colors["base-button"]};
-    background: ${({ theme }) => theme.colors["base-input"]};
-    outline: none;
-    transition: 0.4s;
-    
-    color: ${({ theme }) => theme.colors["base-text"]};
-    font-size: 0.75rem;
-    padding: 0 0.75rem;
-
-    &:focus {
-      border-color: ${({ theme }) => theme.colors["brand-yellow-dark"]};
-    }
-
-    &::placeholder {
-      color: ${({ theme }) => theme.colors["base-label"]}
-    }
-  }
-
   .cep {
     grid-column: span 3;
     max-width: 12.5rem;
@@ -98,7 +77,8 @@ export const AddressFormContainer = styled.div`
 `
 
 export const PaymentFormContainer = styled(ToggleGroup.Root)`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
 `
 
@@ -132,4 +112,10 @@ export const PaymentFormButton = styled(ToggleGroup.Item) <PaymentFormButtonProp
 
   }
   user-select: none;
+`
+
+export const PaymentFormError = styled.p`
+  font-size: ${({ theme }) => theme.textSizes["text-regular-s"]};
+  color: ${({ theme }) => theme.colors["base-error"]};
+  grid-column: span 3 / auto;
 `

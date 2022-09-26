@@ -55,6 +55,7 @@ export const TotalAmount = styled.p`
 `;
 
 export const ConfirmationButton = styled.button`
+  cursor: pointer;
   padding: 0.75rem 2.8rem;
   color: ${({ theme }) => theme.colors["base-white"]};
   font-weight: 700;

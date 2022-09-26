@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SelectedCoffeesCardContainer = styled.form`
+export const SelectedCoffeesCardContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;

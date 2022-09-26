@@ -1,5 +1,7 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
+import { Input } from "../../../../components/Input";
 import {
   CheckOutFormContainer,
   CheckOutFormTitle,
@@ -10,10 +12,26 @@ import {
   AddressFormContainer,
   PaymentFormContainer,
   PaymentFormButton,
+  PaymentFormError,
 } from "./styles";
 
+interface ErrorsType {
+  errors: {
+    [key: string]: {
+      message: string
+    }
+  }
+}
+
 export function CheckoutForm() {
+  const { register, formState, setValue, getValues } = useFormContext();
+  const { errors } = formState as unknown as ErrorsType;
   const [paymentMethod, setPaymentMethod] = useState<string>("")
+  const paymentMethodError = errors?.paymentMethod?.message as unknown as string
+
+  useEffect(() => {
+    setValue('paymentMethod', paymentMethod)
+  }, [paymentMethod])
 
   return (
     <CheckOutFormContainer>
@@ -29,13 +47,58 @@ export function CheckoutForm() {
         </FormCardHeader>
 
         <AddressFormContainer>
-          <input type="number" className="cep" placeholder="CEP" />
-          <input type="text" className="street" placeholder="Rua" />
-          <input type="number" placeholder="Número" />
-          <input type="text" className="complement" placeholder="Complemento" />
-          <input type="text" placeholder="Bairro" />
-          <input type="text" placeholder="Cidade" />
-          <input type="text" placeholder="UF" />
+          <Input
+            type="number"
+            className="cep"
+            placeholder="CEP"
+            {...register("cep")}
+            error={errors.cep?.message}
+          />
+
+          <Input
+            type="text"
+            className="street"
+            placeholder="Rua"
+            {...register("street")}
+            error={errors.street?.message}
+          />
+
+          <Input
+            type="number"
+            placeholder="Número"
+            {...register("number")}
+            error={errors.number?.message}
+          />
+
+          <Input
+            type="text"
+            className="complement"
+            placeholder="Complemento"
+            {...register("complement")}
+            error={errors.complement?.message}
+            rightText="Opcional"
+          />
+
+          <Input
+            type="text"
+            placeholder="Bairro"
+            {...register("district")}
+            error={errors.district?.message}
+          />
+
+          <Input
+            type="text"
+            placeholder="Cidade"
+            {...register("city")}
+            error={errors.city?.message}
+          />
+
+          <Input
+            type="text"
+            placeholder="UF"
+            {...register("uf")}
+            error={errors.uf?.message}
+          />
         </AddressFormContainer>
       </FormCardContainer>
 
@@ -54,29 +117,30 @@ export function CheckoutForm() {
           onValueChange={setPaymentMethod}
         >
           <PaymentFormButton
-            value="0"
+            value="credit"
             title="Cartão de Crédito"
-            selected={paymentMethod === '0'}
+            selected={paymentMethod === 'credit'}
           >
             <CreditCard size={16} />
             Cartão de Crédito
           </PaymentFormButton>
           <PaymentFormButton
-            value="1"
+            value="debit"
             title="Cartão de Débito"
-            selected={paymentMethod === '1'}
+            selected={paymentMethod === 'debit'}
           >
             <Bank size={16} />
             Cartão de Débito
           </PaymentFormButton>
           <PaymentFormButton
-            value="2"
+            value="money"
             title="Dinheiro"
-            selected={paymentMethod === '2'}
+            selected={paymentMethod === 'money'}
           >
             <Money size={16} />
             Dinheiro
           </PaymentFormButton>
+          {paymentMethodError && <PaymentFormError>{paymentMethodError}</PaymentFormError>}
         </PaymentFormContainer>
       </FormCardContainer>
 
